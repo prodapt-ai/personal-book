@@ -1,25 +1,22 @@
 package com.example.demo.google;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.example.demo.db.Book;
-import com.example.demo.db.BookRepository;
-import jakarta.transaction.Transactional;
+import com.example.demo.pojo.GoogleBookDetail;
 
 @Service
 public class GoogleBookService {
 
-	private RestClient restClient;
+	private final RestClient restClient;
 
-	public GoogleBookService(RestClient restClient, BookRepository bookRepository) {
+	public GoogleBookService(RestClient restClient) {
 		this.restClient = restClient;
 	}
 
+	// Search API
 	public GoogleBook searchBooks(String query, Integer maxResults, Integer startIndex) {
+
 		return restClient.get()
 				.uri(uriBuilder -> uriBuilder.path("/volumes").queryParam("q", query)
 						.queryParam("maxResults", maxResults != null ? maxResults : 10)
@@ -27,4 +24,9 @@ public class GoogleBookService {
 				.retrieve().body(GoogleBook.class);
 	}
 
+	// Fetch by Volume ID
+	public GoogleBookDetail fetchBookById(String googleId) {
+
+		return restClient.get().uri("/volumes/{id}", googleId).retrieve().body(GoogleBookDetail.class);
+	}
 }

@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.db.Book;
+import com.example.demo.pojo.BookDTO;
 
 public interface GoogleService {
 
-	Book fetchByVolumeIdAndSave(String googleId);
+    BookDTO fetchAndSaveBook(String googleId);
 
 }
