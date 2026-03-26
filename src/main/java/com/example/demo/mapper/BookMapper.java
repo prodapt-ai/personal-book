@@ -13,6 +13,7 @@ public interface BookMapper {
 	@Mapping(target = "id", source = "id")
 	@Mapping(target = "title", source = "volumeInfo.title")
 	@Mapping(target = "author", expression = "java(String.join(\",\", googleBook.volumeInfo().authors()))")
+	@Mapping(target = "pageCount", source = "volumeInfo.pageCount")
 	Book toEntity(GoogleBookDetail googleBook);
 
 	BookDTO toDTO(Book book);

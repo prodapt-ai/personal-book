@@ -20,4 +20,9 @@ public class Book {
     private String author;
     private Integer pageCount;
 
+    public Book(String id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
 }

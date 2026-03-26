@@ -24,7 +24,6 @@ public class BookPersistenceService {
 	@Transactional
 	public BookDTO saveBook(GoogleBookDetail googleBookDetail) {
 		Book book = mapper.toEntity(googleBookDetail);
-		book.setPageCount(googleBookDetail.volumeInfo().pageCount());
 		Book savedBook = googleRepository.save(book);
 
 		return mapper.toDTO(savedBook);

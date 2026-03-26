@@ -1,17 +1,16 @@
 package com.example.demo.mapper;
 
-import com.example.demo.db.Book;
-import com.example.demo.pojo.BookDTO;
-import com.example.demo.pojo.GoogleBookDetail;
-import com.example.demo.service.BookPersistenceService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
-import org.mockito.Mock;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
+import com.example.demo.db.Book;
+import com.example.demo.pojo.BookDTO;
+import com.example.demo.pojo.GoogleBookDetail;
 
 class BookMapperTest {
 
@@ -19,8 +18,8 @@ class BookMapperTest {
 
 	@Test
 	void testEntityToDTO_HappyPath() {
-		Book book = new Book("1", "Effective Java", "Joshua Bloch");
-		book.setPageCount(264);
+		Book book = new Book("1", "Effective Java", "Joshua Bloch",264);
+		//book.setPageCount(264);
 
 		BookDTO dto = mapper.toDTO(book);
 		assertEquals("1", dto.getId());

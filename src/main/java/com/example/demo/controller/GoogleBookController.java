@@ -17,11 +17,6 @@ public class GoogleBookController {
 		this.googleService = googleService;
 	}
 
-	@GetMapping("/test")
-	public String test() {
-		return "Working";
-	}
-
 	@PostMapping("/{googleId}")
 	public ResponseEntity<BookDTO> addBook(@PathVariable String googleId) {
 		BookDTO saved = googleService.fetchAndSaveBook(googleId);

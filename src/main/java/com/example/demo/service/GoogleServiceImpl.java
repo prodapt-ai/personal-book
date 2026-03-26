@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.execption.GoogleBookExceptions.BookNotFoundException;
@@ -9,10 +7,11 @@ import com.example.demo.google.GoogleBookService;
 import com.example.demo.pojo.BookDTO;
 import com.example.demo.pojo.GoogleBookDetail;
 
-@Service
-public class GoogleServiceImpl implements GoogleService {
+import lombok.extern.slf4j.Slf4j;
 
-	private static final Logger log = LoggerFactory.getLogger(GoogleServiceImpl.class);
+@Service
+@Slf4j
+public class GoogleServiceImpl implements GoogleService {
 
 	private final GoogleBookService googleBookService;
 	private final BookPersistenceService bookPersistenceService;

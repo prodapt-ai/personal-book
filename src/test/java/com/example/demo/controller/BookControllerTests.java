@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import com.example.demo.db.Book;
 import com.example.demo.repository.BookRepository;
@@ -30,8 +30,8 @@ class BookControllerTests {
     @BeforeEach
     void setup() {
         bookRepository.deleteAll();
-        bookRepository.save(new Book("lRtdEAAAQBAJ", "Spring in Action", "Craig Walls"));
-        bookRepository.save(new Book("12muzgEACAAJ", "Effective Java", "Joshua Bloch"));
+        bookRepository.save(new Book("lRtdEAAAQBAJ", "Spring in Action", "Craig Walls",264));
+        bookRepository.save(new Book("12muzgEACAAJ", "Effective Java", "Joshua Bloch",264));
     }
 
     @Test
